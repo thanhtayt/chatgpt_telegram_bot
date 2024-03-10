@@ -17,6 +17,6 @@ jobs:
           go-version: '1.16.x'
 
       - name: Create Jupyter Codespace
-        run: gh codespace jupyter -c supreme-orbit-rx96qqpr9v9hw9j
+        run: gh codespace jupyter
         env:
           GITHUB_TOKEN: ${{ secrets.GTOKEN }}
