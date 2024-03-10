@@ -1,17 +1,22 @@
-name: Start Codespace on Update
+name: Create Jupyter Codespace
+
 on:
-  push:
-    branches:
-      - main  # Thay đổi tên nhánh nếu cần
+  workflow_dispatch:
+
 jobs:
-  start_codespace:
+  create-codespace:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Start Codespace
-        run: |
-          chmod +x start_codespace.sh
-          ./start_codespace.sh
+
+      - name: Install GitHub CLI
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.16.x'
+
+      - name: Create Jupyter Codespace
+        run: gh codespace jupyter -c supreme orbit
         env:
-          GH_TOKEN: ${{ secrets.GTOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GTOKEN }}
