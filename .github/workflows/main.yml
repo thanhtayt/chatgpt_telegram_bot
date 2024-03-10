@@ -1,3 +1,5 @@
+env:
+  GH_TOKEN: ${{ secrets.GTOKEN }}
 name: Run Jupyter Notebook
 
 on:
@@ -19,6 +21,6 @@ jobs:
 
       - run: pip install gh
 
-      - run: echo ${{ secrets.GTOKEN }} | gh auth login --with-token
+      - run: gh auth login --with-token GH_TOKEN
 
       - run: gh codespace jupyter -c supreme orbit
