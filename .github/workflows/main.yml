@@ -1,22 +1,22 @@
-name: Run Jupyter Notebook
+name: Create Jupyter Codespace
 
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  build:
-
+  create-codespace:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-python@v4
+      - name: Install GitHub CLI
+        uses: actions/setup-go@v2
         with:
-          python-version: '3.x'
+          go-version: '1.16.x'
 
-      - run: pip install gh
-
-      - run: gh codespace jupyter -c supreme orbit
+      - name: Create Jupyter Codespace
+        run: gh codespace jupyter -c supreme-orbit-rx96qqpr9v9hw9j
+        env:
+          GITHUB_TOKEN: ${{ secrets.GTOKEN }}
