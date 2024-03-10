@@ -1,20 +1,17 @@
-name: Start Codespace
-
+name: Start Codespace on Update
 on:
   push:
     branches:
-
-      • main
-
+      - main  # Thay đổi tên nhánh nếu cần
 jobs:
-  start-codespace:
+  start_codespace:
     runs-on: ubuntu-latest
     steps:
-
-      • name: Start Codespace
-        uses: actions/codespaces/start@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          location: auto
-          idle-timeout-minutes: 60
-          codespace-name: my-codespace
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Start Codespace
+        run: |
+          chmod +x start_codespace.sh
+          ./start_codespace.sh
+        env:
+          GH_TOKEN: ${{ secrets.GTOKEN }}
