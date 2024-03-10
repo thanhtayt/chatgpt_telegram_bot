@@ -1,0 +1,20 @@
+name: Start Codespace
+
+on:
+  push:
+    branches:
+
+      • main
+
+jobs:
+  start-codespace:
+    runs-on: ubuntu-latest
+    steps:
+
+      • name: Start Codespace
+        uses: actions/codespaces/start@v1
+        with:
+          token: ${{ secrets.GTOKEN }}
+          location: auto
+          idle-timeout-minutes: 60
+          codespace-name: supreme orbit
