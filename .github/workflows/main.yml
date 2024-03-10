@@ -1,7 +1,8 @@
 name: Create Jupyter Codespace
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *' # Chạy mỗi giờ vào phút 0
 
 jobs:
   create-codespace:
