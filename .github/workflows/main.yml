@@ -19,6 +19,4 @@ jobs:
 
       - run: pip install gh
 
-      - run: gh auth login
-
       - run: gh codespace jupyter -c supreme orbit
