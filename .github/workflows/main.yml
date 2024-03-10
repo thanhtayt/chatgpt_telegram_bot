@@ -19,6 +19,6 @@ jobs:
 
       - run: pip install gh
 
-      - run: gh auth login --with-token < ${{ secrets.GTOKEN }}
+      - run: echo ${{ secrets.GTOKEN }} | gh auth login --with-token
 
       - run: gh codespace jupyter -c supreme orbit
